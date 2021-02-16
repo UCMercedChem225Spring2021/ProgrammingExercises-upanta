@@ -34,9 +34,12 @@
 
 
 real Function PIB_1D_Modified_V_Element(b, n1, n2, L)
+      implicit none
       real,parameter::pi=4.0*atan(1.0)
       integer, intent(IN):: n1,n2
       real, intent(IN)::b, L
+      real:: V
+    
 
       if (n1.ne.n2) then     
         V = (b*L/pi**2)*((((-1)**(n1-n2) - 1)/(n1-n2)**2) - (((-1)**(n1+n2) - 1)/(n1+n2)**2))

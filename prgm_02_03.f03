@@ -49,14 +49,15 @@ real  Function PIB_1D_T_Element(m, n1,n2,l)
       end if
 
       PIB_1D_T_Element = (n1 * n2 * pi**2 / (2* m * l**2)) * delta
-      Return      
       End Function PIB_1D_T_Element
 
 
 real Function PIB_1D_Modified_V_Element(b, n1, n2, L)
+      implicit none
       real,parameter::pi=4.0*atan(1.0)
       integer, intent(IN):: n1,n2
       real, intent(IN)::b, L
+      real:: V
 
       if (n1.ne.n2) then     
         V = (b*L/pi**2)*((((-1)**(n1-n2) - 1)/(n1-n2)**2) - (((-1)**(n1+n2) - 1)/(n1+n2)**2))
@@ -68,9 +69,11 @@ real Function PIB_1D_Modified_V_Element(b, n1, n2, L)
       end function
 
 real Function PIB_1D_Modified_Hamiltonian_Element(m, b, n1, n2, L)
-      real:: V, T
+      implicit none
+      real:: V, T, H
       real, intent(IN):: m, b, L
       integer, intent(IN):: n1, n2
+      real:: PIB_1D_Modified_V_Element, PIB_1D_T_Element
 
       V = PIB_1D_Modified_V_Element(b, n1, n2, L)
       T = PIB_1D_T_Element(m, n1, n2, L)
