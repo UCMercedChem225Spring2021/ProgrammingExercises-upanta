@@ -4,7 +4,7 @@
 !
       implicit none
       integer::i, n1, n2, delta
-      real:: m, l, KE_mat, KE_mat_elm
+      real:: m, l, KE_mat, PIB_1D_T_Element
 
       real,parameter::pi=4.0*ATAN(1.0)
 666 format(1X,'Kinetic energy matrix element ',I5,',',I5,' is ',F12.5,'.')
@@ -23,7 +23,7 @@
       read(*,*) n2
 !
 !
-      KE_mat = KE_mat_elm(m, n1, n2, l) 
+      KE_mat = PIB_1D_T_Element(m, n1, n2, l) 
       write(*, 666) n1, n2, KE_mat
 
       End Program prgm_02_01
@@ -32,13 +32,13 @@
 
 
 
-real  Function KE_mat_elm(m, n1,n2,l)
+real  Function PIB_1D_T_Element(m, n1,n2,l)
       
       implicit none
       integer:: delta
       integer, intent(IN):: n1,n2
       real, intent(IN):: m, l
-!      real, intent(OUT):: KE_mat_elm
+!      real, intent(OUT):: PIB_1D_T_Element
       
       real,parameter::pi=4.0*ATAN(1.0)
       if (n1.eq.n2) then
@@ -47,6 +47,6 @@ real  Function KE_mat_elm(m, n1,n2,l)
 	delta=0
       end if
 
-      KE_mat_elm = (n1 * n2 * pi**2 / (2* m * l**2)) * delta
+      PIB_1D_T_Element = (n1 * n2 * pi**2 / (2* m * l**2)) * delta
       Return      
-      End Function KE_mat_elm
+      End Function PIB_1D_T_Element
