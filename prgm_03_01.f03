@@ -121,8 +121,8 @@
 
 9999    format(I6, 5x, 3(2x,f5.1))
 9998    format(I6, 1x,10f15.6)
-9997    format(13x, 3(I6,9x))
-        write(*,9997) 1,2,3
+9997    format(1x,I6)
+        write(*,*) (j, j=1, NDim) 
         do i=1, MDim
           write(*,9998) i, (Mat(i,j), j=1,NDim)
         endDo
